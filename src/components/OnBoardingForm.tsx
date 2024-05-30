@@ -1,13 +1,14 @@
 /* eslint-disable react/no-unescaped-entities */
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { motion } from "framer-motion";
 import { useRouter } from "next/navigation";
 import { Button } from "./ui/button";
 import { SyncLoader } from "react-spinners";
 import toast from "react-hot-toast";
 import { Input } from "./ui/input";
+import { createNewBoard } from "@/app/actions/boardActions";
 
 export const OnboardingForm = ({
   user,
@@ -62,11 +63,12 @@ export const OnboardingForm = ({
           </h1>
           <form
             className="flex flex-col gap-10 items-center"
+            action={createNewBoard}
             onSubmit={stepOneSubmit}
           >
             <Input
               type="text"
-              name="name"
+              name="boardname"
               placeholder="My board"
               disabled={loading}
             />
